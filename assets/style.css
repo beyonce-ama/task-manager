@@ -77,3 +77,37 @@ body {
     border-color: #4e73df;
     box-shadow: 0 0 5px rgba(78, 115, 223, 0.5);
 }
+.modal-content {
+    border-radius: 12px;
+}
+.btn-primary {
+    background-color: #4e73df;
+    border: none;
+    transition: 0.3s;
+}
+.btn-primary:hover {
+    background-color: #3759c7;
+}
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    transition: 0.3s;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+.navbar-nav .nav-item .nav-link.active {
+color: #ffffff; 
+background-color: #007bff; 
+border-radius: 10px; 
+}
+/* General Calendar Styling */
+#calendar {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 10px;
+    background: #ecd9af; /* Light gray background */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
