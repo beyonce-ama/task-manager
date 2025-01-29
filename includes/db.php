@@ -2,7 +2,7 @@
 $host = 'localhost';
 $username = 'root'; 
 $password = '';     
-$database = 'student_task_management';
+$database = 'task_management';
 
 $conn = new mysqli($host, $username, $password, $database);
 
