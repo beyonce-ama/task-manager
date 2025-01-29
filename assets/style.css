@@ -111,3 +111,59 @@ border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Calendar Header */
+.fc-toolbar {
+    background: #e9a653; /* Blue header */
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+/* Navigation Buttons */
+.fc-button {
+    background-color: #b37400 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 5px !important;
+    padding: 10px !important;
+}
+
+.fc-button:hover {
+    background-color: #804600 !important;
+}
+
+/* Calendar Days */
+.fc-daygrid-day {
+    background-color: #f4f3f3 !important;
+    border: 1px solid #dee2e6 !important;
+}
+
+.fc-day-today {
+    background-color: #f1e9d1 !important; /* Light blue */
+}
+
+.fc-event {
+    border-radius: 5px !important;
+    padding: 5px !important;
+    font-size: 14px !important;
+}
+
+/* Task Colors Based on Priority */
+.fc-event[data-priority="High"] {
+    background-color: #dc3545 !important; 
+}
+
+.fc-event[data-priority="Medium"] {
+    background-color: #ffc107 !important; 
+    color: black !important;
+}
+
+.fc-event[data-priority="Low"] {
+    background-color: #28a745 !important;
+}
+
+/* Task Hover Effect */
+.fc-event:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
