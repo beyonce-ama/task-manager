@@ -27,3 +27,53 @@ body {
     font-weight: bold;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 }
+
+.new-tasks {
+    background-color: #4e73df;
+}
+.in-progress {
+    background-color: #1cc88a;
+}
+.due-soon {
+    background-color: #f6c23e;
+}
+.card-body {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.dropdown-menu {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+.card-title {
+    font-weight: bold;
+    color: #333;
+}
+.btn-success, .btn-secondary {
+    transition: all 0.3s;
+}
+.btn-success:hover, .btn-secondary:hover {
+    transform: scale(1.05);
+}
+.dropdown-toggle::after {
+    content: none;
+}
+.task-card {
+    border-radius: 10px;
+    background-color: #f7f7f7;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+}
+.custom-input {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 12px;
+    transition: all 0.3s ease-in-out;
+}
+.custom-input:focus {
+    border-color: #4e73df;
+    box-shadow: 0 0 5px rgba(78, 115, 223, 0.5);
+}
