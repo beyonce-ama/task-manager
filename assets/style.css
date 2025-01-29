@@ -1,0 +1,29 @@
+body {
+    background-color: #f4f6f9;
+}
+.navbar {
+    background: linear-gradient(45deg, #4e73df, #1cc88a);
+}
+.navbar-brand {
+    color: white !important;
+    font-size: 1.5rem;
+}
+.navbar-nav .nav-link {
+    color: white !important;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.navbar-nav .nav-link:hover {
+    color: #1cc88a !important;
+}
+.container {
+    padding-top: 20px;
+}
+.section-title {
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
