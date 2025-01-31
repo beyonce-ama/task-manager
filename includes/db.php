@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$username = 'root'; 
-$password = '';     
-$database = 'task_management';
+$username = 'u993755557_taskmanager'; 
+$password = 'Taskmanager2025';     
+$database = 'u993755557_taskmanager';
 
 $conn = new mysqli($host, $username, $password, $database);
 
