@@ -121,6 +121,9 @@
                     <p><strong>Monica Carreon</strong><br>Developer</p>
                 </div>
                 <div class="col-md-3">
+                    <p><strong>Rachelle Anne Macalino</strong><br>Developer</p>
+                </div>
+                <div class="col-md-3">
                     <p><strong>Romel Gamboa</strong><br>Developer</p>
                 </div>
                 <div class="col-md-3">
@@ -134,9 +137,8 @@
         </div>
     </footer>
 
-</body>
-</html>
-
+ <!-- Bootstrap js -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
