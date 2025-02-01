@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $update->bind_param('sssssi', $title, $description, $priority, $due_date, $status, $task_id);
 
     if ($update->execute()) {
+        $_SESSION['message'] = "Task updated successfully!";
         header('Location: ' . $_SERVER['HTTP_REFERER'] . '?task_updated=true');
         exit;
     } else {

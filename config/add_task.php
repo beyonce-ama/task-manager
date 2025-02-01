@@ -15,6 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query->bind_param('isssss', $user_id, $title, $description, $priority, $due_date, $status);
 
     if ($query->execute()) {
+
+        $_SESSION['message'] = "New task added successfully!";
         header('Location: ' . $_SERVER['HTTP_REFERER'] . '?task_added=true');
         exit;
     } else {

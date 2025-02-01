@@ -13,7 +13,6 @@ if (isset($_GET['id'])) {
     $updateQuery->bind_param('ii', $task_id, $_SESSION['user_id']);
     $updateQuery->execute();
 
-    // Set a session message
     $_SESSION['message'] = "Congratulations! You've completed the task.";
 
     header('Location: ' . $_SERVER['HTTP_REFERER'] . '?task_updated=true');
