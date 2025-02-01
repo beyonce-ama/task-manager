@@ -109,6 +109,24 @@
         </div>
     </div>
 
+    <div class="container mt-5">
+        <h2 class="text-center">How It Works</h2>
+        <div class="row text-center mt-4">
+            <div class="col-md-4">
+                <i class="fas fa-user-plus fa-3x text-primary"></i>
+                <h5>Sign Up</h5>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-tasks fa-3x text-success"></i>
+                <h5>Add Tasks</h5>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-check fa-3x text-info"></i>
+                <h5>Stay Productive</h5>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer mt-5 py-4 bg-dark text-white">
         <div class="container text-center">
