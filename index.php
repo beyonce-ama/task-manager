@@ -115,14 +115,17 @@
             <div class="col-md-4">
                 <i class="fas fa-user-plus fa-3x text-primary"></i>
                 <h5>Sign Up</h5>
+                <p>Create your free account and start organizing your tasks.</p>
             </div>
             <div class="col-md-4">
                 <i class="fas fa-tasks fa-3x text-success"></i>
                 <h5>Add Tasks</h5>
+                <p>List your daily, weekly, or project-based tasks effortlessly.</p>
             </div>
             <div class="col-md-4">
                 <i class="fas fa-check fa-3x text-info"></i>
                 <h5>Stay Productive</h5>
+                <p>Complete tasks, track progress, and boost efficiency.</p>
             </div>
         </div>
     </div>
@@ -133,17 +136,25 @@
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        Is this task manager free to use?
                     </button>
                 </h2>
                 <div id="faq1" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                        Yes! You can use our task manager for free with all essential features.
+                    </div>
                 </div>
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        Can I access my tasks from multiple devices?
                     </button>
                 </h2>
                 <div id="faq2" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        Absolutely! Our platform syncs across all your devices.
+                    </div>
                 </div>
             </div>
         </div>
