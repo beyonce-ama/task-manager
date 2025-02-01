@@ -52,6 +52,7 @@ checkSession();
             </div>
         </div>
     </nav>
+    <div id="notification" class="show"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -109,7 +110,25 @@ checkSession();
     calendar.render();
 });
 </script>
+<script>
+      window.onload = function() {
+            <?php if (isset($_SESSION['message'])): ?>
+                var notification = document.getElementById('notification');
+                var message = "<?php echo $_SESSION['message']; ?>";
 
+                var messageDiv = document.createElement('div');
+                messageDiv.innerText = message;
+                messageDiv.classList.add('notification-item');
+                notification.appendChild(messageDiv);
+
+                setTimeout(function() {
+                    notification.removeChild(messageDiv);
+                }, 5000); 
+
+                <?php unset($_SESSION['message']); ?>
+            <?php endif; ?>
+        };
+</script>
 
 </body>
 </html>
