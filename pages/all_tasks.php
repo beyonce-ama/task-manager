@@ -63,7 +63,7 @@ if (!$inProgressTasksResult) {
         </div>
     </nav>
 
-    <div id="notification"></div>
+    <div id="notification" class="show"></div>
     
     <div class="container">
         <div class="row">
