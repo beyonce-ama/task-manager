@@ -126,6 +126,28 @@
             </div>
         </div>
     </div>
+    
+    <div class="container mt-5">
+        <h2 class="text-center">Frequently Asked Questions</h2>
+        <div class="accordion mt-4" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show">
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer mt-5 py-4 bg-dark text-white">
