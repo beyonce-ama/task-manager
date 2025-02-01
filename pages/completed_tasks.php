@@ -26,6 +26,42 @@ $completedTasksResult = $completedTasksQuery->get_result();
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+    #notification {
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .notification-item {
+        background-color:rgb(175, 89, 76);
+        color: white;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 5px;
+        font-size: 16px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    #notification.show {
+        display: block;
+    }
+
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -59,7 +95,7 @@ $completedTasksResult = $completedTasksQuery->get_result();
             </div>
         </div>
     </nav>
-
+    <div id="notification" class="show"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -128,6 +164,26 @@ $completedTasksResult = $completedTasksQuery->get_result();
         }
     }
 </script>
+<script>
+      window.onload = function() {
+            <?php if (isset($_SESSION['message'])): ?>
+                var notification = document.getElementById('notification');
+                var message = "<?php echo $_SESSION['message']; ?>";
+
+                var messageDiv = document.createElement('div');
+                messageDiv.innerText = message;
+                messageDiv.classList.add('notification-item');
+                notification.appendChild(messageDiv);
+
+                setTimeout(function() {
+                    notification.removeChild(messageDiv);
+                }, 5000); 
+
+                <?php unset($_SESSION['message']); ?>
+            <?php endif; ?>
+        };
+</script>
+
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
