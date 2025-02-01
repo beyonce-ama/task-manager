@@ -111,10 +111,23 @@
     <!-- Footer -->
     <footer class="footer mt-5 py-4 bg-dark text-white">
         <div class="container text-center">
-          
+            <p class="mb-2">This Task Management System is a project created for educational purposes as part of a DevOps learning initiative.</p>
+            <h5 class="mb-3">Meet the Team</h5>
             <div class="row justify-content-center">
                 <div class="col-md-3">
+                    <p><strong>Beyonce Ama</strong><br>Project Manager</p>
+                </div>
+                <div class="col-md-3">
+                    <p><strong></strong><br></p>
+                </div>
+                <div class="col-md-3">
+                    <p><strong></strong><br></p>
+                </div>
+                <div class="col-md-3">
                     <p><strong>Kayle Cedric Larin</strong><br>Developer</p>
+                </div>
+                <div class="col-md-3">
+                    <p><strong>Jolas Arpon</strong><br>Developer</p>
                 </div>
             </div>
             <p class="mt-3">&copy; 2025 Task Management System.</p>
