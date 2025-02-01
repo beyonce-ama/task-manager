@@ -113,7 +113,7 @@ $dueSoonResult = $dueSoonQuery->get_result();
             </div>
         </div>
     </nav>
-    <div id="notification"></div>
+    <div id="notification" class="show"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
