@@ -118,10 +118,10 @@
                     <p><strong>Beyonce Ama</strong><br>Project Manager</p>
                 </div>
                 <div class="col-md-3">
-                    <p><strong></strong><br></p>
+                    <p><strong>Monica Carreon</strong><br>Developer</p>
                 </div>
                 <div class="col-md-3">
-                    <p><strong></strong><br></p>
+                    <p><strong>Romel Gamboa</strong><br>Developer</p>
                 </div>
                 <div class="col-md-3">
                     <p><strong>Kayle Cedric Larin</strong><br>Developer</p>
@@ -130,7 +130,7 @@
                     <p><strong>Jolas Arpon</strong><br>Developer</p>
                 </div>
             </div>
-            <p class="mt-3">&copy; 2025 Task Management System.</p>
+            <p class="mt-3">&copy; 2025 Task Management System. All rights reserved.</p>
         </div>
     </footer>
 
