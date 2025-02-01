@@ -409,17 +409,23 @@ $dueSoonResult = $dueSoonQuery->get_result();
     });
 </script>
 <script>
-window.onload = function() {
-    <?php if (isset($_SESSION['message'])): ?>
-        var notification = document.getElementById('notification');
-        notification.innerText = "<?php echo $_SESSION['message']; ?>";
-        notification.classList.add('show');
-        setTimeout(function() {
-            notification.classList.remove('show');
-        }, 5000);
-        <?php unset($_SESSION['message']); ?>
-    <?php endif; ?>
-};
+        window.onload = function() {
+            <?php if (isset($_SESSION['message'])): ?>
+                var notification = document.getElementById('notification');
+                var message = "<?php echo $_SESSION['message']; ?>";
+
+                var messageDiv = document.createElement('div');
+                messageDiv.innerText = message;
+                messageDiv.classList.add('notification-item');
+                notification.appendChild(messageDiv);
+
+                setTimeout(function() {
+                    notification.removeChild(messageDiv);
+                }, 5000); 
+
+                <?php unset($_SESSION['message']); ?>
+            <?php endif; ?>
+        };
 </script>
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
