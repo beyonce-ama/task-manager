@@ -59,7 +59,7 @@ $low_result = mysqli_query($conn, $low_query);
             </div>
         </div>
     </nav>
-
+    <div id="notification"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -391,7 +391,19 @@ $low_result = mysqli_query($conn, $low_query);
         dueDateInput.value = dueDate;
     });
 </script>
-
+<script>
+window.onload = function() {
+    <?php if (isset($_SESSION['message'])): ?>
+        var notification = document.getElementById('notification');
+        notification.innerText = "<?php echo $_SESSION['message']; ?>";
+        notification.classList.add('show');
+        setTimeout(function() {
+            notification.classList.remove('show');
+        }, 5000);
+        <?php unset($_SESSION['message']); ?>
+    <?php endif; ?>
+};
+</script>
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

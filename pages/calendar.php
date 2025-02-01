@@ -68,6 +68,14 @@ checkSession();
             </div>
         </div>
     </div>
+
+    <div class="task-calendar-description text-center mt-3">
+        <p style="color: black; font-size: 18px; text-shadow: 2px 2px 10px rgba(0,0,0,0.3);">
+            This calendar helps you visualize and manage your tasks efficiently. 
+            You can drag and drop tasks to reschedule them easily.
+        </p>
+    </div>
+    
     <div id="calendar"></div>
     <script>
    document.addEventListener('DOMContentLoaded', function() {
@@ -100,7 +108,6 @@ checkSession();
     });
     calendar.render();
 });
-
 </script>
 
 

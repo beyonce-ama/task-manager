@@ -63,6 +63,8 @@ if (!$inProgressTasksResult) {
         </div>
     </nav>
 
+    <div id="notification"></div>
+    
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -258,6 +260,19 @@ if (!$inProgressTasksResult) {
         prioritySelect.value = priority;
         dueDateInput.value = dueDate;
     });
+</script>
+<script>
+window.onload = function() {
+    <?php if (isset($_SESSION['message'])): ?>
+        var notification = document.getElementById('notification');
+        notification.innerText = "<?php echo $_SESSION['message']; ?>";
+        notification.classList.add('show');
+        setTimeout(function() {
+            notification.classList.remove('show');
+        }, 5000);
+        <?php unset($_SESSION['message']); ?>
+    <?php endif; ?>
+};
 </script>
 
 
