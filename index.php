@@ -108,6 +108,22 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer mt-5 py-4 bg-dark text-white">
+        <div class="container text-center">
+          
+            <div class="row justify-content-center">
+                <div class="col-md-3">
+                    <p><strong>Kayle Cedric Larin</strong><br>Developer</p>
+                </div>
+            </div>
+            <p class="mt-3">&copy; 2025 Task Management System.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
 
 </body>
 </html>
