@@ -29,6 +29,53 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <head>
                     <meta charset='UTF-8'>
                     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            color: #333;
+                            background-color: #f4f4f4;
+                            margin: 0;
+                            padding: 20px;
+                        }
+                        .email-container {
+                            max-width: 600px;
+                            margin: 0 auto;
+                            background-color: #ffffff;
+                            padding: 20px;
+                            border-radius: 8px;
+                            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        }
+                        .email-header {
+                            text-align: center;
+                            margin-bottom: 20px;
+                        }
+                        .email-header h1 {
+                            color: #4e73df;
+                        }
+                        .email-body {
+                            font-size: 16px;
+                            line-height: 1.5;
+                            color: #555;
+                            margin-bottom: 20px;
+                        }
+                        .email-footer {
+                            font-size: 14px;
+                            color: #888;
+                            text-align: center;
+                            margin-top: 20px;
+                        }
+                        .btn {
+                            background-color: #4e73df;
+                            color: #fff;
+                            padding: 10px 20px;
+                            text-decoration: none;
+                            border-radius: 5px;
+                            font-weight: bold;
+                        }
+                        .btn:hover {
+                            background-color: #1cc88a;
+                        }
+                    </style>
                 </head>
                 <body>
                     <div class='email-container'>
@@ -43,20 +90,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <a href='$verification_link' class='btn'>Verify Email</a>
                             </p>
                             <p>If you did not sign up for Task Manager, please ignore this email.</p>
-                        </div>                  
+                        </div>
+                        <div class='email-footer'>
+                            <p>Best regards,</p>
+                            <p>The Task Manager Team</p>
+                            <p><a href='https://taskmanager.fun' style='color: #4e73df;'>Visit Task Manager</a></p>
+                        </div>
                     </div>
                 </body>
                 </html>
                 ";
                 
             if (sendEmail($email, $subject, $message)) {
-                // Success Message
                 echo '<div class="mt-4 alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Success!</strong> Verification email sent! Please check your inbox.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                       </div>';
             } else {
-                // Error Message
                 echo '<div class="mt-4 alert alert-danger alert-dismissible fade show" role="alert">
                         <strong>Error!</strong> Failed to send verification email.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
