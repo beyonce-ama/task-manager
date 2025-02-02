@@ -214,6 +214,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="username"  class="form-label fw-semibold">Username:</label>
             <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
         </div>
+        <div class="mb-3 d-flex flex-column text-start">
+            <label for="email"  class="form-label fw-semibold">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
+        </div>
         <div class="mb-4 d-flex flex-column text-start">
             <label for="password" class="form-label fw-semibold">Password:</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
