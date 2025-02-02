@@ -1,28 +1,69 @@
 <?php
 include '../includes/db.php';
+include '../config/email.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash password
+    $email = $_POST['email']; 
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $verification_code = md5(rand());
 
-    // Check if username exists
     $checkQuery = $conn->prepare("SELECT id FROM users WHERE username = ?");
     $checkQuery->bind_param('s', $username);
     $checkQuery->execute();
     $checkQuery->store_result();
 
     if ($checkQuery->num_rows > 0) {
-        $error = "Username already exists!";
+        echo "Username already exists!";
     } else {
-        // Insert into users
-        $query = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-        $query->bind_param('ss', $username, $password);
+        $query = $conn->prepare("INSERT INTO users (username, email, password, verification_code, is_verified) VALUES (?, ?, ?, ?, 0)");
+        $query->bind_param('ssss', $username, $email, $password, $verification_code);
 
         if ($query->execute()) {
-            header('Location: login.php?registered=true');
-            exit;
+            $verification_link = "https://taskmanager.fun/pages/verify.php?code=$verification_code";
+                $subject = "Activate Your Task Manager Account";
+
+                $message = "
+                <!DOCTYPE html>
+                <html lang='en'>
+                <head>
+                    <meta charset='UTF-8'>
+                    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                </head>
+                <body>
+                    <div class='email-container'>
+                        <div class='email-header'>
+                            <h1>Welcome to Task Manager!</h1>
+                        </div>
+                        <div class='email-body'>
+                            <p>Hi $username,</p>
+                            <p>Thank you for registering with Task Manager! We are excited to have you onboard and help you stay organized and productive.</p>
+                            <p>To complete your registration and activate your account, please click the button below to verify your email address:</p>
+                            <p style='text-align: center;'>
+                                <a href='$verification_link' class='btn'>Verify Email</a>
+                            </p>
+                            <p>If you did not sign up for Task Manager, please ignore this email.</p>
+                        </div>                  
+                    </div>
+                </body>
+                </html>
+                ";
+                
+            if (sendEmail($email, $subject, $message)) {
+                // Success Message
+                echo '<div class="mt-4 alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Success!</strong> Verification email sent! Please check your inbox.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>';
+            } else {
+                // Error Message
+                echo '<div class="mt-4 alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error!</strong> Failed to send verification email.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>';
+            }
         } else {
-            $error = "Registration failed!";
+            echo "Registration failed!";
         }
     }
 }
