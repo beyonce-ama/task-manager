@@ -107,9 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
         <div class="input-group mb-3">
             <input type="password" name="password" id="password" class="form-control" placeholder="Enter new password" required>
-            <span class="input-group-text" onclick="togglePassword()">
-                <i class="fas fa-eye" id="eyeIcon"></i>
-            </span>
+            <i class="fa fa-eye toggle-password" id="togglePassword"></i>
         </div>
         <button type="submit" class="btn btn-primary w-100">Reset Password</button>
     </form>
