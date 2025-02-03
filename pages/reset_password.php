@@ -82,6 +82,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             color: black;
             background-color: #17a673;
         }
+        .input-group {
+            position: relative;
+            width: 100%;
+        }
         .toggle-password {
             position: absolute;
             right: 25px;
