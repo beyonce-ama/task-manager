@@ -1,5 +1,5 @@
 <?php
-include '../includes/db.php';
+include '../config/db.php';
 
 $message = '';
 $token = $_GET['token'] ?? '';
@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $token = $_POST["token"];
     $new_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
+    // Verify token
     $query = $conn->prepare("SELECT id FROM users WHERE reset_token = ? AND reset_token_expiry > NOW()");
     $query->bind_param("s", $token);
     $query->execute();
@@ -17,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query->bind_result($user_id);
         $query->fetch();
 
+        // Update password and clear token
         $update = $conn->prepare("UPDATE users SET password = ?, reset_token = NULL, reset_token_expiry = NULL WHERE id = ?");
         $update->bind_param("si", $new_password, $user_id);
         
@@ -29,9 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "<div class='alert alert-warning'>Invalid or expired token.</div>";
     }
 }
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -39,7 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Reset Password</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
     <style>
         body {
             background: linear-gradient(45deg, #4e73df, #1cc88a);
@@ -52,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             text-align: center;
         }
         .reset-container {
-            max-width: 600px;
+            max-width: 400px;
             margin: 100px auto;
             padding: 30px;
             background-color: #fff;
@@ -64,9 +63,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             color: black;
             margin-bottom: 20px;
         }
+        .input-group {
+            position: relative;
+        }
+        .input-group-text {
+            background: none;
+            border-left: none;
+            cursor: pointer;
+        }
         .form-control {
-            margin-bottom: 20px;
-            padding: 15px;
+            border-right: none;
         }
         .btn-primary {
             color: black;
@@ -76,26 +82,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 10px;
             border-radius: 25px;
             font-size: 16px;
+            font-weight: bold;
             transition: 0.3s;
         }
         .btn-primary:hover {
             color: black;
             background-color: #17a673;
-        }
-        .input-group {
-            position: relative;
-            width: 100%;
-        }
-        .toggle-password {
-            position: absolute;
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: gray;
-        }
-        .toggle-password:hover {
-            color: black;
         }
     </style>
 </head>
@@ -111,27 +103,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
         <div class="input-group mb-3">
             <input type="password" name="password" id="password" class="form-control" placeholder="Enter new password" required>
-            <i class="fa fa-eye toggle-password" id="togglePassword"></i>
+            <span class="input-group-text" onclick="togglePassword()">
+                <i class="fas fa-eye" id="eyeIcon"></i>
+            </span>
         </div>
         <button type="submit" class="btn btn-primary w-100">Reset Password</button>
     </form>
 
     <p class="mt-3"><a href="login.php">Back to Login</a></p>
 </div>
-    
+
 <script>
-    document.getElementById("togglePassword").addEventListener("click", function() {
-        let passwordInput = document.getElementById("password");
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            this.classList.remove("fa-eye");
-            this.classList.add("fa-eye-slash");
-        } else {
-            passwordInput.type = "password";
-            this.classList.remove("fa-eye-slash");
-            this.classList.add("fa-eye");
-        }
-    });
+function togglePassword() {
+    let passwordField = document.getElementById("password");
+    let eyeIcon = document.getElementById("eyeIcon");
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+    } else {
+        passwordField.type = "password";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+    }
+}
 </script>
 
 </body>

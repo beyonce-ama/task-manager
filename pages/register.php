@@ -233,11 +233,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="email"  class="form-label fw-semibold">Email:</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
         </div>
-        <div class="input-group mb-4 d-flex flex-column text-start">
-            <label for="password" class="form-label fw-semibold">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
-            <i class="fa fa-eye toggle-password" id="togglePassword"></i>
-        </div>
+        <div class="mb-1 d-flex flex-column text-start">
+         <label for="password"  class="form-label fw-semibold">Password:</label>
+    </div> 
+        <div class="input-group mb-4 text-start ">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Enter new password" required>
+                <i class="fa fa-eye toggle-password" id="togglePassword"></i>
+            </div>
             <button type="submit" class="btn btn-custom">Sign Up</button>
         </form>
         <p class="login-link">Already have an account? <a href="login.php">Login here</a></p>
