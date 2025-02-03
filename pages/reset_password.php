@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .reset-container {
             max-width: 600px;
             margin: 100px auto;
-            padding: 20px;
+            padding: 30px;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         .form-control {
             margin-bottom: 20px;
-            padding: 18px;
+            padding: 15px;
         }
         .btn-primary {
             color: black;
