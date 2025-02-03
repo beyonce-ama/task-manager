@@ -40,8 +40,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f4f7fc;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #4e73df, #1cc88a);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
         }
         .reset-container {
             max-width: 400px;
@@ -53,18 +59,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             text-align: center;
         }
         .reset-container h2 {
-            color: #4e73df;
+            color: black;
             margin-bottom: 20px;
         }
         .form-control {
             margin-bottom: 15px;
         }
         .btn-primary {
-            background-color: #4e73df;
+            color: black;
+            background-color: #1cc88a;
             border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
         }
         .btn-primary:hover {
-            background-color: #1cc88a;
+            color: black;
+            background-color: #17a673;
         }
     </style>
 </head>
@@ -78,12 +92,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <form method="POST">
         <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
-        <input type="password" name="password" class="form-control" placeholder="Enter new password" required>
+        <div class="input-group mb-3">
+            <input type="password" name="password" id="password" class="form-control" placeholder="Enter new password" required>
+            <span class="input-group-text" onclick="togglePassword()">
+                <i class="fas fa-eye" id="eyeIcon"></i>
+            </span>
+        </div>
         <button type="submit" class="btn btn-primary w-100">Reset Password</button>
     </form>
 
     <p class="mt-3"><a href="login.php">Back to Login</a></p>
 </div>
+
+<script>
+    function togglePassword() {
+        let passwordField = document.getElementById("password");
+        let eyeIcon = document.getElementById("eyeIcon");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+    }
+</script>
 
 </body>
 </html>

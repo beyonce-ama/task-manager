@@ -137,12 +137,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if (isset($error)) echo "<div class='alert alert-danger'>$error</div>"; ?>
         <form method="POST">
             <div class="mb-3 d-flex flex-column text-start">
-                <label for="input" class="form-label fw-semibold">Username or Email:</label>
                 <input type="text" class="form-control" id="input" name="input" placeholder="Enter Username or Email" required>
             </div>
-            <div class="mb-2 d-flex flex-column text-start">
-                <label for="password" class="form-label fw-semibold">Password:</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+            <div class="input-group mb-2 text-start ">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Enter new password" required>
+                <span class="input-group-text" onclick="togglePassword()">
+                    <i class="fas fa-eye" id="eyeIcon"></i>
+                </span>
             </div>
             <div class="forgot-pass text-end">
                 <a href="forgot_password.php">Forgot Password?</a>
@@ -152,5 +153,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="login-link">Don't have an account? <a href="register.php">Register here</a></p>
     </div>
 
+ <script>
+    function togglePassword() {
+        let passwordField = document.getElementById("password");
+        let eyeIcon = document.getElementById("eyeIcon");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+    }
+</script>
 </body>
 </html>
