@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             text-align: center;
         }
         .reset-container {
-            max-width: 400px;
+            max-width: 500px;
             margin: 100px auto;
             padding: 30px;
             background-color: #fff;
@@ -73,7 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 10px;
             border-radius: 25px;
             font-size: 16px;
-            font-weight: bold;
             transition: 0.3s;
         }
         .btn-primary:hover {
