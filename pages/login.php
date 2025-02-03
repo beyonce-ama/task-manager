@@ -3,11 +3,16 @@ session_start();
 include '../includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
+    $input = $_POST['input']; 
     $password = $_POST['password'];
 
-    $query = $conn->prepare("SELECT * FROM users WHERE username = ?");
-    $query->bind_param('s', $username);
+    if (filter_var($input, FILTER_VALIDATE_EMAIL)) {
+        $query = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    } else {
+        $query = $conn->prepare("SELECT * FROM users WHERE username = ?");
+    }
+
+    $query->bind_param('s', $input);
     $query->execute();
     $result = $query->get_result();
 
@@ -26,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "User not found.";
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <title>Task Manager - Register</title>
+    <title>Task Manager - Login</title> 
     <style>
         body {
             background: linear-gradient(45deg, #4e73df, #1cc88a);
@@ -103,6 +107,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: #ffeb3b;
             font-weight: bold;
         }
+        .forgot-pass {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .forgot-pass a {
+            color: #4e73df;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .forgot-pass a:hover {
+            text-decoration: underline;
+        }
         .icon {
             font-size: 30px;
             color: black;
@@ -120,19 +136,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h2>Log In</h2>
         <?php if (isset($error)) echo "<div class='alert alert-danger'>$error</div>"; ?>
         <form method="POST">
-        <div class="mb-3 d-flex flex-column text-start">
-            <label for="username"  class="form-label fw-semibold">Username:</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
-        </div>
-        <div class="mb-4 d-flex flex-column text-start">
-            <label for="password" class="form-label fw-semibold">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
-        </div>
-            <button type="submit" class="btn btn-custom">Log In</button>
+            <div class="mb-3 d-flex flex-column text-start">
+                <label for="input" class="form-label fw-semibold">Username or Email:</label>
+                <input type="text" class="form-control" id="input" name="input" placeholder="Enter Username or Email" required>
+            </div>
+            <div class="mb-2 d-flex flex-column text-start">
+                <label for="password" class="form-label fw-semibold">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+            </div>
+            <div class="forgot-pass text-end">
+                <a href="forgot_password.php">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn btn-custom mt-3">Log In</button>
         </form>
         <p class="login-link">Don't have an account? <a href="register.php">Register here</a></p>
     </div>
 
 </body>
 </html>
-
