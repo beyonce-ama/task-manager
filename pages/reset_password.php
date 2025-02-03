@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             text-align: center;
         }
         .reset-container {
-            max-width: 500px;
+            max-width: 600px;
             margin: 100px auto;
             padding: 30px;
             background-color: #fff;
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin-bottom: 20px;
         }
         .form-control {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         .btn-primary {
             color: black;
