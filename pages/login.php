@@ -124,6 +124,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: black;
             margin-bottom: 10px;
         }
+        .toggle-password {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: gray;
+        }
+        .toggle-password:hover {
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -141,9 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="input-group mb-2 text-start ">
                 <input type="password" name="password" id="password" class="form-control" placeholder="Enter new password" required>
-                <span class="input-group-text" onclick="togglePassword()">
-                    <i class="fas fa-eye" id="eyeIcon"></i>
-                </span>
+                <i class="fa fa-eye toggle-password" id="togglePassword"></i>
             </div>
             <div class="forgot-pass text-end">
                 <a href="forgot_password.php">Forgot Password?</a>
@@ -152,22 +161,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
         <p class="login-link">Don't have an account? <a href="register.php">Register here</a></p>
     </div>
-
- <script>
-    function togglePassword() {
-        let passwordField = document.getElementById("password");
-        let eyeIcon = document.getElementById("eyeIcon");
-
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            eyeIcon.classList.remove("fa-eye");
-            eyeIcon.classList.add("fa-eye-slash");
+    
+    <script>
+    document.getElementById("togglePassword").addEventListener("click", function() {
+        let passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            this.classList.remove("fa-eye");
+            this.classList.add("fa-eye-slash");
         } else {
-            passwordField.type = "password";
-            eyeIcon.classList.remove("fa-eye-slash");
-            eyeIcon.classList.add("fa-eye");
+            passwordInput.type = "password";
+            this.classList.remove("fa-eye-slash");
+            this.classList.add("fa-eye");
         }
-    }
+    });
 </script>
 </body>
 </html>

@@ -66,6 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         .form-control {
             margin-bottom: 20px;
+            padding: 18px;
         }
         .btn-primary {
             color: black;
@@ -80,6 +81,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .btn-primary:hover {
             color: black;
             background-color: #17a673;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: gray;
+        }
+        .toggle-password:hover {
+            color: black;
         }
     </style>
 </head>
@@ -104,22 +116,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <p class="mt-3"><a href="login.php">Back to Login</a></p>
 </div>
-
+    
 <script>
-    function togglePassword() {
-        let passwordField = document.getElementById("password");
-        let eyeIcon = document.getElementById("eyeIcon");
-
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            eyeIcon.classList.remove("fa-eye");
-            eyeIcon.classList.add("fa-eye-slash");
+    document.getElementById("togglePassword").addEventListener("click", function() {
+        let passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            this.classList.remove("fa-eye");
+            this.classList.add("fa-eye-slash");
         } else {
-            passwordField.type = "password";
-            eyeIcon.classList.remove("fa-eye-slash");
-            eyeIcon.classList.add("fa-eye");
+            passwordInput.type = "password";
+            this.classList.remove("fa-eye-slash");
+            this.classList.add("fa-eye");
         }
-    }
+    });
 </script>
 
 </body>

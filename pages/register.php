@@ -198,6 +198,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             color: black;
             margin-bottom: 10px;
         }
+        .toggle-password {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: gray;
+        }
+        .toggle-password:hover {
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -221,11 +232,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="mb-4 d-flex flex-column text-start">
             <label for="password" class="form-label fw-semibold">Password:</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+            <i class="fa fa-eye toggle-password" id="togglePassword"></i>
         </div>
             <button type="submit" class="btn btn-custom">Sign Up</button>
         </form>
         <p class="login-link">Already have an account? <a href="login.php">Login here</a></p>
     </div>
 
+    <script>
+    document.getElementById("togglePassword").addEventListener("click", function() {
+        let passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            this.classList.remove("fa-eye");
+            this.classList.add("fa-eye-slash");
+        } else {
+            passwordInput.type = "password";
+            this.classList.remove("fa-eye-slash");
+            this.classList.add("fa-eye");
+        }
+    });
+</script>
 </body>
 </html>
