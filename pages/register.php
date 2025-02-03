@@ -198,6 +198,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             color: black;
             margin-bottom: 10px;
         }
+        .input-group {
+            position: relative;
+            width: 100%;
+        }
         .toggle-password {
             position: absolute;
             right: 25px;
@@ -229,7 +233,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="email"  class="form-label fw-semibold">Email:</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
         </div>
-        <div class="mb-4 d-flex flex-column text-start">
+        <div class="input-group mb-4 d-flex flex-column text-start">
             <label for="password" class="form-label fw-semibold">Password:</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
             <i class="fa fa-eye toggle-password" id="togglePassword"></i>
