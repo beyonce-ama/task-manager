@@ -21,11 +21,65 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($update->execute()) {
    
             $reset_link = "https://taskmanager.fun/pages/reset_password.php?token=$token";
-            $subject = "Password Reset Request";
-            $message = "Click the link below to reset your password:\n$reset_link\n\nThis link will expire in 1 hour.";
-            $headers = "From: no-reply@taskmanager.fun";
+            $subject = "Password Reset Request - Task Manager";
+
+            $message = "
+            <html>
+            <head>
+                <title>Password Reset Request</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f4f4f4;
+                        padding: 20px;
+                    }
+                     h2{
+                        color: #4e73df;
+                    }
+                    .container {
+                        max-width: 500px;
+                        background-color: #ffffff;
+                        padding: 20px;
+                        border-radius: 8px;
+                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                        text-align: center;
+                    }
+                    .btn {
+                            background-color: #4e73df;
+                            color: white;
+                            padding: 10px 20px;
+                            text-decoration: none;
+                            border-radius: 5px;
+                            font-weight: bold;
+                        }
+                        .btn:hover {
+                            background-color: #1cc88a;
+                        }
+                    .footer {
+                        font-size: 12px;
+                        color: #666;
+                        margin-top: 20px;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class='container'>
+                    <h2>Password Reset Request</h2>
+                    <p>You recently requested to reset your password for your Task Manager account. Click the button below to reset it.</p>
+                    <a href='$reset_link' class='btn'>Reset Password</a>
+                    <p>If you did not request this, please ignore this email. This link will expire in 1 hour.</p>
+                    <div class='footer'>
+                        <p>&copy; " . date('Y') . " Task Manager. All rights reserved.</p>
+                    </div>
+                </div>
+            </body>
+            </html>";
             
-            sendEmail($email, $subject, $message, $headers);
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
+            $headers .= "From: no-reply@taskmanager.fun" . "\r\n";
+            
+            sendEmail($email, $subject, $message, $headers);            
             
             $message = "<div class='alert alert-success'>Check your email for the reset link.</div>";
         } else {
