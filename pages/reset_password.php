@@ -1,5 +1,5 @@
 <?php
-include '../config/db.php';
+include '../includes/db.php';
 
 $message = '';
 $token = $_GET['token'] ?? '';
