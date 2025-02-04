@@ -1,6 +1,6 @@
 <?php
-include '../includes/db.php';
-include '../config/email.php';
+include './includes/db.php';
+include './config/email.php';
 
 $date_today = date('Y-m-d');
 
@@ -62,7 +62,7 @@ while ($row = $result->fetch_assoc()) {
             }
             .btn {
                 background-color: #4e73df;
-                color: #fff;
+                color: white;
                 padding: 10px 20px;
                 text-decoration: none;
                 border-radius: 5px;
