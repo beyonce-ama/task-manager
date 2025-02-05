@@ -71,26 +71,14 @@ $completedTasksResult = $completedTasksQuery->get_result();
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.php">Dashboard</a>
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="calendar.php">Calendar</a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="tasks_by_priority.php">Tasks by Priority</a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="all_tasks.php">In Progress Tasks</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="completed_tasks.php">Completed Tasks</a>
-                    </li>
-                  
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="return confirmLogout();">Logout</a>
-                    </li>
+            <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">  <a class="nav-link" href="dashboard.php">Dashboard</a></li> 
+                    <li class="nav-item"> <a class="nav-link" href="calendar.php">Calendar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tasks_by_priority.php">Tasks by Priority</a></li>
+                    <li class="nav-item"><a class="nav-link" href="all_tasks.php">In Progress Tasks</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="completed_tasks.php">Completed Tasks</a></li>
+                    <li class="nav-item"><a class="nav-link" href="settings.php">Settings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="return confirmLogout();">Logout</a></li>
                 </ul>
             </div>
         </div>
