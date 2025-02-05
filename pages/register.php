@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $checkQuery->store_result();
 
     if ($checkQuery->num_rows > 0) {
-        echo "Username already exists!";
+        $error = "Username already exists!";
     } else {
         $query = $conn->prepare("INSERT INTO users (username, email, password, verification_code, is_verified) VALUES (?, ?, ?, ?, 0)");
         $query->bind_param('ssss', $username, $email, $password, $verification_code);
@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                       </div>';
             }
         } else {
-            echo "Registration failed!";
+            $error = "Registration failed!";
         }
     }
 }
